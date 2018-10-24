@@ -6,6 +6,7 @@ import com.kotlin.user.data.respository.UserRepository
 import com.kotlin.user.service.UserService
 import rx.Observable
 import rx.functions.Func1
+import javax.inject.Inject
 
 /**
  *
@@ -14,10 +15,15 @@ import rx.functions.Func1
  * @author zhf QQ:578121695
  * @time 2018/10/19 9:49
  */
-class UserServiceImpl : UserService {
-    override fun register(mobile: String, pwd: String, verifyCode: String): Observable<Boolean> {
+class UserServiceImpl @Inject constructor(): UserService {
 
-        val repository = UserRepository()
+    // 延迟加载
+    @Inject
+    lateinit var  repository:UserRepository
+
+    override fun register(mobile: String, pwd: String, verifyCode: String): Observable<Boolean> {
+          // 添加dagger2 后 可使用   lateinit var  repository:UserRepository 替换
+//        val repository = UserRepository()
 
 
         // FuncX常用在map、flatMap中，将传过来的数值类型转化为另一种数值类型，“FuncX”中的“X”代表着多少个参数

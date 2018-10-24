@@ -50,7 +50,10 @@ class RetrofitFactory private constructor() {
                 .build()
     }
 
-    private fun initClient(): OkHttpClient? {
+    /**
+     * OKHttp创建
+     */
+    private fun initClient(): OkHttpClient {
 
         return OkHttpClient.Builder()
                 .addInterceptor(interceptor)  // 通用拦截器 与 head 相关
@@ -69,9 +72,9 @@ class RetrofitFactory private constructor() {
         return interceptor
     }
 
-    /*
-       具体服务实例化
-    */
+    /**
+     * 具体服务实例化
+     */
     fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
     }

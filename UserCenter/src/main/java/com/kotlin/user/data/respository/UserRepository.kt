@@ -5,6 +5,7 @@ import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.user.data.api.UserApi
 import com.kotlin.user.data.protocol.RegisterReq
 import rx.Observable
+import javax.inject.Inject
 
 /**
  *
@@ -13,7 +14,7 @@ import rx.Observable
  * @author zhf QQ:578121695
  * @time 2018/10/19 15:49
  */
-class UserRepository {
+class UserRepository @Inject constructor(){
 
     /**
      * 用户注册

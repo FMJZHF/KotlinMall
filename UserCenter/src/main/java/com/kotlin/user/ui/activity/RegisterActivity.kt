@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.user.R
 import com.kotlin.user.R.id.mRegister
+import com.kotlin.user.injection.component.DaggerUserComponent
+import com.kotlin.user.injection.module.UserModule
 import com.kotlin.user.presenter.RegisterPresenter
 import com.kotlin.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
@@ -21,9 +23,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        mPresenter = RegisterPresenter()
-        mPresenter.mView = this
+//        mPresenter = RegisterPresenter()
+//        mPresenter.mView = this
 
+        initInjection()
 
         mRegister.setOnClickListener {
 
@@ -34,6 +37,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
             mPresenter.register(mobile, pwd, verifyCode)
 
         };
+
+    }
+
+    //  Dagger注册
+    private fun initInjection() {
+
+        // 完成注入
+        DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
 
     }
 }
