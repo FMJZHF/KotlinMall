@@ -10,7 +10,7 @@ import com.kotlin.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView{
+class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
     override fun onRegisterResult(result: Boolean) {
 
@@ -27,7 +27,11 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView{
 
         mRegister.setOnClickListener {
 
-            mPresenter.register("","","")
+            var mobile = mMobileEt.text.toString();
+            var pwd = mPwdEt.text.toString();
+            var verifyCode = mVerifyCodeEt.text.toString();
+
+            mPresenter.register(mobile, pwd, verifyCode)
 
         };
 
