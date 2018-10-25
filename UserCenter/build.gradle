@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
 
@@ -61,7 +62,9 @@ dependencies {
 
     implementation project(':Provider')
 
-    kapt 'com.google.dagger:dagger-compiler:2.18'
+//    annotationProcessor  'com.google.dagger:dagger-compiler:2.18'
+    kapt  'com.google.dagger:dagger-compiler:2.18'
+
 }
 repositories {
     mavenCentral()

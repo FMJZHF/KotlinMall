@@ -44,7 +44,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     private fun initInjection() {
 
         // 完成注入
-        DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+        DaggerUserComponent.builder()
+                .activityComponent(mActivityComponent)
+                .userModule(UserModule())
+                .build().inject(this)
         mPresenter.mView = this
 
     }
