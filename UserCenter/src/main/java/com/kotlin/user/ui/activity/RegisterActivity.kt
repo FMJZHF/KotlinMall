@@ -25,11 +25,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         mPresenter.mView = this
     }
 
-    override fun onRegisterResult(result: String) {
-
-        toast(result);
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -47,5 +42,16 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
 
     }
+
+    // 结果回调
+    override fun onRegisterResult(result: String) {
+
+        toast(result);
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
 
 }
