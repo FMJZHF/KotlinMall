@@ -2,6 +2,8 @@ package com.kotlin.user.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.user.R
 import com.kotlin.user.R.id.mRegister
@@ -14,9 +16,18 @@ import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
-    override fun onRegisterResult(result: Boolean) {
+    //  Dagger注册
+    override fun injectComponent() {
+        DaggerUserComponent.builder()
+                .activityComponent(mActivityComponent)
+                .userModule(UserModule())
+                .build().inject(this)
+        mPresenter.mView = this
+    }
 
-        toast("注册成功");
+    override fun onRegisterResult(result: String) {
+
+        toast(result);
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,29 +37,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter = RegisterPresenter()
 //        mPresenter.mView = this
 
-        initInjection()
-
-        mRegister.setOnClickListener {
-
+        mRegister.onClick {
             var mobile = mMobileEt.text.toString();
             var pwd = mPwdEt.text.toString();
             var verifyCode = mVerifyCodeEt.text.toString();
 
             mPresenter.register(mobile, pwd, verifyCode)
+        }
 
-        };
-
-    }
-
-    //  Dagger注册
-    private fun initInjection() {
-
-        // 完成注入
-        DaggerUserComponent.builder()
-                .activityComponent(mActivityComponent)
-                .userModule(UserModule())
-                .build().inject(this)
-        mPresenter.mView = this
 
     }
+
 }

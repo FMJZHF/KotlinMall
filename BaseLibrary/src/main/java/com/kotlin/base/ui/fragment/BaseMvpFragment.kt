@@ -1,6 +1,9 @@
-package com.kotlin.base.ui.activity
+package com.kotlin.base.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.kotlin.base.common.BaseApplication
 import com.kotlin.base.injection.component.ActivityComponent
 import com.kotlin.base.injection.component.DaggerActivityComponent
@@ -12,12 +15,12 @@ import javax.inject.Inject
 
 /**
  *
- *  Desc:  Activity基类，业务无关
+ *  Desc: Fragment基类，业务相关
  *
  * @author zhf QQ:578121695
- * @time 2018/10/18 10:59
+ * @time 2018/10/25 17:58
  */
-open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
 
     //Presenter泛型，Dagger注入
     @Inject // 标注属性
@@ -30,17 +33,18 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
      */
     protected abstract fun injectComponent()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initActivityInjection()
         injectComponent()
+
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     // 初始Activity Component
     private fun initActivityInjection() {
         mActivityComponent = DaggerActivityComponent.builder()
-                .appComponent((application as BaseApplication).appComponent)
-                .activityModule(ActivityModule(this))
+                .appComponent((activity!!.application as BaseApplication).appComponent)
+                .activityModule(ActivityModule(this!!.activity!!))
                 .lifecycleProviderModule(LifecycleProviderModule(this))
                 .build()
     }
