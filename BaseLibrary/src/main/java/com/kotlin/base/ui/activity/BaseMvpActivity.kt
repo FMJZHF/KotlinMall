@@ -8,6 +8,8 @@ import com.kotlin.base.injection.module.ActivityModule
 import com.kotlin.base.injection.module.LifecycleProviderModule
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
+import com.kotlin.base.widgets.ProgressLoading
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 /**
@@ -25,6 +27,9 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
 
     lateinit var mActivityComponent: ActivityComponent
 
+    // 动画加载框 Loading
+    private lateinit var mLoadingDialog: ProgressLoading
+
     /**
      *   Dagger注册
      */
@@ -34,6 +39,9 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
         super.onCreate(savedInstanceState)
         initActivityInjection()
         injectComponent()
+
+        //初始加载框
+        mLoadingDialog = ProgressLoading.create(this)
     }
 
     // 初始Activity Component
@@ -49,21 +57,21 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
      * 显示加载框，默认实现
      */
     override fun showLoading() {
-
+        mLoadingDialog.showLoading()
     }
 
     /**
      * 隐藏加载框，默认实现
      */
     override fun hideLoading() {
-
+        mLoadingDialog.hideLoading()
     }
 
     /**
      * 错误信息提示，默认实现
      */
-    override fun onError() {
-
+    override fun onError(text: String) {
+        toast(text)
     }
 
 }

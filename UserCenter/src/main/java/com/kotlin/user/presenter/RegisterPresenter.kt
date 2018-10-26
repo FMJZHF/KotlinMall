@@ -3,8 +3,10 @@ package com.kotlin.user.presenter
 import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseSubscriber
+import com.kotlin.base.utils.NetWorkUtils
 import com.kotlin.user.presenter.view.RegisterView
 import com.kotlin.user.service.impl.UserServiceImpl
+import java.net.NetPermission
 import javax.inject.Inject
 
 /**
@@ -21,13 +23,19 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
     lateinit var  userService:UserServiceImpl
 
     fun register(mobile: String, pwd: String, verifyCode: String) {
+
+        // 判断网络是否可用
+        if (!checkNetWork()) {
+            return
+        }
+        // 显示加载框
+        mView.showLoading()
+
         /**
          * 业务逻辑
          */
-        // 添加dagger2 后 可使用    lateinit var  userService:UserServiceImpl 替换
-//        val userService = UserServiceImpl()
         userService.register(mobile, pwd, verifyCode)
-                .execute(object : BaseSubscriber<Boolean>() {
+                .execute(object : BaseSubscriber<Boolean>(mView) {
                     override fun onNext(t: Boolean) {
                         if(t)
                         mView.onRegisterResult("注册成功")
