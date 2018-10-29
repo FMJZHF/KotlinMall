@@ -69,27 +69,27 @@ class HeaderBar @JvmOverloads constructor(
             }
         }
 
+    }
 
-        /*
-            获取左侧视图
-         */
-        fun getLeftView(): ImageView {
-            return mLeftIv
-        }
+    /*
+        获取左侧视图
+     */
+    fun getLeftView(): ImageView {
+        return mLeftIv
+    }
 
-        /*
-            获取右侧视图
-         */
-        fun getRightView(): TextView {
-            return mRightTv
-        }
+    /*
+        获取右侧视图
+     */
+    fun getRightView(): TextView {
+        return mRightTv
+    }
 
-        /*
-            获取右侧文字
-         */
-        fun getRightText(): String {
-            return mRightTv.text.toString()
-        }
+    /*
+        获取右侧文字
+     */
+    fun getRightText(): String {
+        return mRightTv.text.toString()
     }
 
 }
