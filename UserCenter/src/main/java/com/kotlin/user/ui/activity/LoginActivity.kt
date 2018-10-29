@@ -51,7 +51,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         mLoginBtn.onClick(this)
 
         mHeaderBar.getRightView().onClick(this)
-//        mForgetPwdTv.onClick(this)
+        mForgetPwdTv.onClick(this)
 
     }
 
@@ -84,7 +84,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
             // 忘记密码
             R.id.mForgetPwdTv -> {
-//                startActivity<ForgetPwdActivity>()
+                startActivity<ForgetPwdActivity>()
             }
         }
     }
