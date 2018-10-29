@@ -1,6 +1,8 @@
 package com.kotlin.user.ui.activity
 
 import android.os.Bundle
+import android.view.View
+import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.user.R
@@ -11,7 +13,7 @@ import com.kotlin.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
+class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
 
     //  Dagger注册
     override fun injectComponent() {
@@ -26,42 +28,52 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-//        mPresenter = RegisterPresenter()
-//        mPresenter.mView = this
-
-        mRegisterBtn.onClick {
-            var mobile = mMobileEt.text.toString();
-            var pwd = mPwdEt.text.toString();
-            var verifyCode = mVerifyCodeEt.text.toString();
-
-            mPresenter.register(mobile, pwd, verifyCode)
-        }
-
-//        mVerifyCodeBtn.setOnVerifyBtnClick(object :VerifyButton.OnVerifyBtnClick{
-//            override fun onClick() {
-//
-//                toast("获取验证码")
-//            }
-//
-//        })
-
-
-        mVerifyCodeBtn.onClick {
-            mVerifyCodeBtn.requestSendVerifyNumber()
-        }
-
+        initView()
 
     }
 
-    // 结果回调
-    override fun onRegisterResult(result: String) {
+    /*
+        初始化视图
+     */
+    private fun initView() {
+        // 判断输入框是否都不为空
+        mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
+        mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
 
+        mVerifyCodeBtn.onClick(this)
+        mRegisterBtn.onClick(this)
+    }
+
+    // 注册结果回调
+    override fun onRegisterResult(result: String) {
         toast(result);
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    override fun onClick(v: View) {
+        when (v.id) {
+            // 发送验证码
+            R.id.mVerifyCodeBtn -> {
+                mVerifyCodeBtn.requestSendVerifyNumber()
+                toast("发送验证成功")
+            }
+
+            // 注册
+            R.id.mRegisterBtn -> {
+                mPresenter.register(mMobileEt.text.toString(), mPwdEt.text.toString(), mVerifyCodeEt.text.toString())
+            }
+        }
+
     }
 
-
+    /*
+       判断按钮是否可用
+    */
+    private fun isBtnEnable(): Boolean {
+        return mMobileEt.text.isNullOrEmpty().not() &&
+                mVerifyCodeEt.text.isNullOrEmpty().not() &&
+                mPwdEt.text.isNullOrEmpty().not() &&
+                mPwdConfirmEt.text.isNullOrEmpty().not()
+    }
 }
