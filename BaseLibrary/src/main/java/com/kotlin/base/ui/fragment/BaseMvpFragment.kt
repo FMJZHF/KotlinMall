@@ -46,7 +46,7 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
     private fun initActivityInjection() {
         mActivityComponent = DaggerActivityComponent.builder()
                 .appComponent((activity!!.application as BaseApplication).appComponent)
-                .activityModule(ActivityModule(this!!.activity!!))
+                .activityModule(ActivityModule(activity!!))
                 .lifecycleProviderModule(LifecycleProviderModule(this))
                 .build()
     }

@@ -25,7 +25,7 @@ class ProgressLoading private constructor(context: Context, theme: Int) : Dialog
         /*
             创建加载对话框
          */
-        fun create(context: Context):ProgressLoading { // :ProgressLoading  返回 ProgressLoading
+        fun create(context: Context): ProgressLoading { // :ProgressLoading  返回 ProgressLoading
             //样式引入
             mDialog = ProgressLoading(context, R.style.LightProgressDialog)
             //设置布局
@@ -58,7 +58,7 @@ class ProgressLoading private constructor(context: Context, theme: Int) : Dialog
     /*
         隐藏加载对话框，动画停止
      */
-    fun hideLoading(){
+    fun hideLoading() {
         super.dismiss()
         animDrawable?.stop()
     }

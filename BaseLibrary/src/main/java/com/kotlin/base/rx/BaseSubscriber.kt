@@ -10,7 +10,7 @@ import rx.Subscriber
  * @author zhf QQ:578121695
  * @time 2018/10/19 10:09
  */
-open class BaseSubscriber<T>(val baseView:BaseView): Subscriber<T>() {
+open class BaseSubscriber<T>(val baseView: BaseView) : Subscriber<T>() {
 
     override fun onCompleted() {
         baseView.hideLoading()

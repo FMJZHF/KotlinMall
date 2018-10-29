@@ -15,7 +15,7 @@ import dagger.Provides
 @Module
 class ActivityModule(private val activity: Activity) {
 
-//    @ActivityScope
+    //    @ActivityScope
     @Provides
     fun provideActivity(): Activity {
         return this.activity

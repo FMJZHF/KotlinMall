@@ -17,10 +17,10 @@ import javax.inject.Inject
  * @time 2018/10/18 14:54
  */
 //  @Inject constructor()  实例化的 构造函数
-class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
+class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
     @Inject
-    lateinit var  userService:UserServiceImpl
+    lateinit var userService: UserServiceImpl
 
     fun register(mobile: String, pwd: String, verifyCode: String) {
 
@@ -37,9 +37,9 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
         userService.register(mobile, pwd, verifyCode)
                 .execute(object : BaseSubscriber<Boolean>(mView) {
                     override fun onNext(t: Boolean) {
-                        if(t)
-                        mView.onRegisterResult("注册成功")
+                        if (t)
+                            mView.onRegisterResult("注册成功")
                     }
-                },lifecycleProvider)
+                }, lifecycleProvider)
     }
 }

@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * @time 2018/10/24 11:27
  */
 @Module
-class AppModule(private val context: BaseApplication){
+class AppModule(private val context: BaseApplication) {
 
     // 工厂方法
     @Singleton

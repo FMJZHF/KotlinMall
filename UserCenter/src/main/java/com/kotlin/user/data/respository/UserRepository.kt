@@ -14,7 +14,7 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/10/19 15:49
  */
-class UserRepository @Inject constructor(){
+class UserRepository @Inject constructor() {
 
     /**
      * 用户注册

@@ -20,7 +20,7 @@ object GlideUtils {
     }
 
     fun loadImageFitCenter(context: Context, url: String, imageView: ImageView) {
-        Glide.with(context).load(url) .apply(RequestOptions().fitCenter()).into(imageView)
+        Glide.with(context).load(url).apply(RequestOptions().fitCenter()).into(imageView)
     }
 
     /*

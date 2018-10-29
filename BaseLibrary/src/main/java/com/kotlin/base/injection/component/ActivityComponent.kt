@@ -16,7 +16,7 @@ import dagger.Component
  * @time 2018/10/24 14:30
  */
 @ActivityScope
-@Component(dependencies = arrayOf(AppComponent::class),modules = arrayOf(ActivityModule::class, LifecycleProviderModule::class))
+@Component(dependencies = arrayOf(AppComponent::class), modules = arrayOf(ActivityModule::class, LifecycleProviderModule::class))
 interface ActivityComponent {
 
     fun activity(): Activity

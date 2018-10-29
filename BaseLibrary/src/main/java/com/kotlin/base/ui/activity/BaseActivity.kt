@@ -11,7 +11,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity
  * @author zhf QQ:578121695
  * @time 2018/10/18 10:58
  */
-open class BaseActivity:RxAppCompatActivity() {
+open class BaseActivity : RxAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

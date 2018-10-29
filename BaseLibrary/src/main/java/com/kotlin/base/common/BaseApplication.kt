@@ -13,7 +13,7 @@ import com.kotlin.base.injection.module.AppModule
  * @author zhf QQ:578121695
  * @time 2018/10/24 11:29
  */
-class BaseApplication :Application(){
+class BaseApplication : Application() {
 
     lateinit var appComponent: AppComponent
 

@@ -17,16 +17,15 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/10/19 9:49
  */
-class UserServiceImpl @Inject constructor(): UserService {
+class UserServiceImpl @Inject constructor() : UserService {
 
     // 延迟加载
     @Inject
-    lateinit var  repository:UserRepository
+    lateinit var repository: UserRepository
 
     override fun register(mobile: String, pwd: String, verifyCode: String): Observable<Boolean> {
-          // 添加dagger2 后 可使用   lateinit var  repository:UserRepository 替换
+        // 添加dagger2 后 可使用   lateinit var  repository:UserRepository 替换
 //        val repository = UserRepository()
-
 
 
         return repository.register(mobile, pwd, verifyCode)

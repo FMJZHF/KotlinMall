@@ -19,7 +19,7 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/10/18 10:59
  */
-open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
 
     //Presenter泛型，Dagger注入
     @Inject // 标注属性

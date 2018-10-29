@@ -33,7 +33,7 @@ fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>, lifecycleProvider: 
 /*
     扩展点击事件
  */
-fun View.onClick(listener:View.OnClickListener):View{
+fun View.onClick(listener: View.OnClickListener): View {
     setOnClickListener(listener)
     return this
 }
@@ -41,7 +41,7 @@ fun View.onClick(listener:View.OnClickListener):View{
 /*
     扩展点击事件，参数为方法 Unit : 没有返回值
  */
-fun View.onClick(method:() -> Unit):View{
+fun View.onClick(method: () -> Unit): View {
     setOnClickListener { method() }
     return this
 }
@@ -49,14 +49,14 @@ fun View.onClick(method:() -> Unit):View{
 /*
     扩展数据转换
  */
-fun <T> Observable<BaseResp<T>>.convert():Observable<T>{
+fun <T> Observable<BaseResp<T>>.convert(): Observable<T> {
     return this.flatMap(BaseFunc())
 }
 
 /*
     扩展Boolean类型数据转换
  */
-fun <T> Observable<BaseResp<T>>.convertBoolean():Observable<Boolean>{
+fun <T> Observable<BaseResp<T>>.convertBoolean(): Observable<Boolean> {
     return this.flatMap(BaseFuncBoolean())
 }
 

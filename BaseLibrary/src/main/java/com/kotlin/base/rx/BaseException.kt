@@ -7,4 +7,4 @@ package com.kotlin.base.rx
  * @author zhf QQ:578121695
  * @time 2018/10/19 17:08
  */
-class BaseException(val status:Int,val msg:String) :Throwable()
+class BaseException(val status: Int, val msg: String) : Throwable()

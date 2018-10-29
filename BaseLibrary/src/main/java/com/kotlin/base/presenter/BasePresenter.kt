@@ -13,9 +13,9 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/10/18 10:13
  */
-open class BasePresenter<T:BaseView> {
+open class BasePresenter<T : BaseView> {
 
-    lateinit var mView:T
+    lateinit var mView: T
 
     // Dagger注入，Rx生命周期管理
     @Inject
@@ -27,8 +27,8 @@ open class BasePresenter<T:BaseView> {
     /*
        检查网络是否可用
     */
-    fun checkNetWork():Boolean{
-        if(NetWorkUtils.isNetWorkAvailable(context)){
+    fun checkNetWork(): Boolean {
+        if (NetWorkUtils.isNetWorkAvailable(context)) {
             return true
         }
         mView.onError("网络不可用")

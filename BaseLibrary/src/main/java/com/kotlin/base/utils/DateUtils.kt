@@ -5,9 +5,10 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
+
 /**
  *
- *  Desc: 期工具类 默认使用 "yyyy-MM-dd HH:mm:ss" 格式化日期
+ *  Desc: 日期工具类 默认使用 "yyyy-MM-dd HH:mm:ss" 格式化日期
  *
  * @author zhf QQ:578121695
  * @time 2018/10/26 13:53
@@ -96,7 +97,8 @@ object DateUtils {
      * *
      * @return
      */
-    @JvmOverloads fun format(date: Date?, pattern: String = datePattern): String {
+    @JvmOverloads
+    fun format(date: Date?, pattern: String = datePattern): String {
         var returnValue = ""
         if (date != null) {
             val df = SimpleDateFormat(pattern)
@@ -117,7 +119,8 @@ object DateUtils {
      * *
      * @return
      */
-    @JvmOverloads fun parse(strDate: String, pattern: String = datePattern): Date? {
+    @JvmOverloads
+    fun parse(strDate: String, pattern: String = datePattern): Date? {
         val df = SimpleDateFormat(pattern)
         df.timeZone = defTimeZone
         try {

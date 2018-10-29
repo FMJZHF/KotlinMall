@@ -11,6 +11,7 @@ import com.kotlin.base.R
 import com.kotlin.base.ext.onClick
 
 import kotlinx.android.synthetic.main.layout_header_bar.view.*
+
 /**
  *
  *  Desc:  Header Bar封装
@@ -25,15 +26,15 @@ class HeaderBar @JvmOverloads constructor(
     //是否显示"返回"图标
     private var isShowBack = true
     //Title文字
-    private var titleText:String? = null
+    private var titleText: String? = null
     //右侧文字
-    private var rightText:String? = null
+    private var rightText: String? = null
 
     init {
         //获取自定义属性
-        val typedArray = context.obtainStyledAttributes(attrs,R.styleable.HeaderBar)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.HeaderBar)
 
-        isShowBack = typedArray.getBoolean(R.styleable.HeaderBar_isShowBack,true)
+        isShowBack = typedArray.getBoolean(R.styleable.HeaderBar_isShowBack, true)
 
         titleText = typedArray.getString(R.styleable.HeaderBar_titleText)
         rightText = typedArray.getString(R.styleable.HeaderBar_rightText)
@@ -46,7 +47,7 @@ class HeaderBar @JvmOverloads constructor(
      * 初始化视图
      */
     private fun initView() {
-        View.inflate(context,R.layout.layout_header_bar,this)
+        View.inflate(context, R.layout.layout_header_bar, this)
 
         mLeftIv.visibility = if (isShowBack) View.VISIBLE else View.GONE
 
@@ -63,7 +64,7 @@ class HeaderBar @JvmOverloads constructor(
 
         //返回图标默认实现（关闭Activity）
         mLeftIv.onClick {
-            if (context is Activity){
+            if (context is Activity) {
                 (context as Activity).finish()
             }
         }
@@ -86,7 +87,7 @@ class HeaderBar @JvmOverloads constructor(
         /*
             获取右侧文字
          */
-        fun getRightText():String{
+        fun getRightText(): String {
             return mRightTv.text.toString()
         }
     }

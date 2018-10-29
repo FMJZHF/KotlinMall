@@ -1,13 +1,9 @@
 package com.kotlin.user.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
-import com.kotlin.base.utils.VerifyButton
 import com.kotlin.user.R
-import com.kotlin.user.R.id.mRegister
 import com.kotlin.user.injection.component.DaggerUserComponent
 import com.kotlin.user.injection.module.UserModule
 import com.kotlin.user.presenter.RegisterPresenter
@@ -33,7 +29,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter = RegisterPresenter()
 //        mPresenter.mView = this
 
-        mRegister.onClick {
+        mRegisterBtn.onClick {
             var mobile = mMobileEt.text.toString();
             var pwd = mPwdEt.text.toString();
             var verifyCode = mVerifyCodeEt.text.toString();

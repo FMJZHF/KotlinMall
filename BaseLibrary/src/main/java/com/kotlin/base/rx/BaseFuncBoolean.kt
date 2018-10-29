@@ -13,7 +13,7 @@ import rx.functions.Func1
  * @time 2018/10/25 17:29
  */
 // FuncX常用在map、flatMap中，将传过来的数值类型转化为另一种数值类型，“FuncX”中的“X”代表着多少个参数
-class BaseFuncBoolean<T> : Func1<BaseResp<T>, Observable<Boolean>>{
+class BaseFuncBoolean<T> : Func1<BaseResp<T>, Observable<Boolean>> {
 
     override fun call(t: BaseResp<T>): Observable<Boolean> {
         if (t.status != ResultCode.SUCCESS) {
