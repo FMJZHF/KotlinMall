@@ -69,8 +69,8 @@ dependencies {
     api 'com.bigkoo:alertview:1.0.3'
     // 七牛云
     api 'com.qiniu:qiniu-android-sdk:7.3.+'
-
-
+    // 底部导航栏
+    api 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
 }
 repositories {
     mavenCentral()
