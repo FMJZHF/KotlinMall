@@ -1,7 +1,10 @@
 package com.kotlin.user.presenter
 
+import com.kotlin.base.ext.excute
 import com.kotlin.base.presenter.BasePresenter
+import com.kotlin.base.rx.BaseSubscriber
 import com.kotlin.user.presenter.view.UserInfoView
+import com.kotlin.user.service.UploadService
 import com.kotlin.user.service.UserService
 import javax.inject.Inject
 
@@ -12,8 +15,27 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/10/30 10:23
  */
-class UserInfoPresenter @Inject constructor(): BasePresenter<UserInfoView>() {
+class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>() {
 
     @Inject
     lateinit var userService: UserService
+
+
+    @Inject
+    lateinit var uploadService: UploadService
+
+    /*
+        获取七牛云上传凭证
+     */
+    fun getUploadToken() {
+        if (!checkNetWork())
+            return
+
+        mView.showLoading()
+        uploadService.getUploadToken().excute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onGetUploadTokenResult(t)
+            }
+        }, lifecycleProvider)
+    }
 }

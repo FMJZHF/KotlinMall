@@ -10,11 +10,11 @@ import com.kotlin.user.data.protocol.UserInfo
  * @author zhf QQ:578121695
  * @time 2018/10/30 10:24
  */
-interface UserInfoView:BaseView {
+interface UserInfoView : BaseView {
 
-//    获取上传凭证回调
-//    fun onGetUploadTokenResult(result:String)
+    // 获取上传凭证回调
+    fun onGetUploadTokenResult(result: String)
 
     // 编辑用户资料回调
-//    fun onEditUserResult(result: UserInfo)
+    fun onEditUserResult(result: UserInfo)
 }

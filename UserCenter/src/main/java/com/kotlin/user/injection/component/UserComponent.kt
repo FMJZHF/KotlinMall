@@ -16,7 +16,7 @@ import dagger.Component
  */
 
 @PerComponentScope
-@Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(UserModule::class))
+@Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(UserModule::class, UploadModule::class))
 interface UserComponent {
     // 注册
     fun inject(activity: RegisterActivity)
