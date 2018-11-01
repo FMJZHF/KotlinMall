@@ -71,6 +71,8 @@ dependencies {
     api 'com.qiniu:qiniu-android-sdk:7.3.+'
     // 底部导航栏
     api 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
+    // banner
+    api 'com.youth.banner:banner:1.4.10'
 }
 repositories {
     mavenCentral()
