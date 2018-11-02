@@ -13,7 +13,7 @@ import javax.inject.Inject
  * @author zhf QQ:578121695
  * @time 2018/11/1 10:54
  */
-class UploadServiceImpl @Inject constructor() : UploadService {
+class  UploadServiceImpl @Inject constructor() : UploadService {
     @Inject
     lateinit var repository: UploadRepository
 

@@ -29,15 +29,32 @@ import org.jetbrains.anko.support.v4.toast
  * @time 2018/11/1 16:58
  */
 class HomeFragment : BaseFragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_home,null)
+        return inflater.inflate(R.layout.fragment_home, null)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initBanner()
+        initNews()
+//        initDiscount()
+//        initTopic()
+    }
+
+    /*
+        初始化视图
+     */
+    private fun initView() {
+        mSearchEt.onClick {
+            //            startActivity<SearchGoodsActivity>()
+        }
+
+        mScanIv.onClick {
+            toast(R.string.coming_soon_tip)
+        }
     }
 
     /*
@@ -53,6 +70,14 @@ class HomeFragment : BaseFragment() {
         //banner设置方法全部调用完毕时最后调用
         mHomeBanner.start()
 
+    }
+
+    /*
+        初始化公告
+     */
+    private fun initNews() {
+        //公告
+        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场", "新用户立领1000元优惠券"))
     }
 
 }
