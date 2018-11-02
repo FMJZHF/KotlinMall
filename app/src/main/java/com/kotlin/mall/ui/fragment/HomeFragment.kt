@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.widgets.BannerImageLoader
-//import com.kotlin.goods.ui.activity.SearchGoodsActivity
 import com.kotlin.mall.R
 import com.kotlin.mall.common.*
-//import com.kotlin.mall.ui.adapter.HomeDiscountAdapter
-//import com.kotlin.mall.ui.adapter.TopicAdapter
+import com.kotlin.mall.ui.adapter.HomeDiscountAdapter
+import com.kotlin.mall.ui.adapter.TopicAdapter
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-//import me.crosswall.lib.coverflow.CoverFlow
+import me.crosswall.lib.coverflow.CoverFlow
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
@@ -40,8 +39,8 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initBanner()
         initNews()
-//        initDiscount()
-//        initTopic()
+        initDiscount()
+        initTopic()
     }
 
     /*
@@ -80,4 +79,29 @@ class HomeFragment : BaseFragment() {
         mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场", "新用户立领1000元优惠券"))
     }
 
+    /*
+        初始化折扣
+     */
+    private fun initDiscount() {
+        val manager = LinearLayoutManager(context)
+        manager.orientation = LinearLayoutManager.HORIZONTAL
+        mHomeDiscountRv.layoutManager = manager
+
+        val discountAdapter  = HomeDiscountAdapter(activity!!)
+        mHomeDiscountRv.adapter = discountAdapter
+        discountAdapter.setData(mutableListOf(HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE, HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE))
+    }
+
+    /*
+        初始化主题
+     */
+    private fun initTopic() {
+        //话题
+        mTopicPager.adapter = TopicAdapter(context!!, listOf(HOME_TOPIC_ONE, HOME_TOPIC_TWO, HOME_TOPIC_THREE, HOME_TOPIC_FOUR, HOME_TOPIC_FIVE))
+        mTopicPager.currentItem = 1
+        mTopicPager.offscreenPageLimit = 5
+
+        // 绑定viewPage
+        CoverFlow.Builder().with(mTopicPager).scale(0.3f).pagerMargin(-30.0f).spaceSize(0.0f).build()
+    }
 }

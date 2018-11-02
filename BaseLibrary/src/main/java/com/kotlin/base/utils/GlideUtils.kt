@@ -1,9 +1,12 @@
 package com.kotlin.base.utils
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.kotlin.base.R
 
 
@@ -30,7 +33,16 @@ object GlideUtils {
         var options = RequestOptions()
                 .placeholder(R.drawable.default_loading)
                 .error(R.drawable.default_loading)
+                .skipMemoryCache(false)
                 .centerCrop()
-        Glide.with(context).load(url).apply(options).into(imageView)
+
+        Glide.with(context).load(url)
+                .apply(options)
+                .into(object : SimpleTarget<Drawable>() {
+                    override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                        imageView.setImageDrawable(resource)
+                    }
+                })
     }
+
 }
