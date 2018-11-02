@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.kotlin.base.common.BaseConstant
 import com.kotlin.base.ext.loadUrl
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.utils.AppPrefsUtils
 import com.kotlin.mall.R
-//import com.kotlin.mall.ui.activity.SettingActivity
+import com.kotlin.mall.ui.activity.SettingActivity
 //import com.kotlin.order.common.OrderConstant
 //import com.kotlin.order.common.OrderStatus
 //import com.kotlin.order.ui.activity.OrderActivity
 //import com.kotlin.order.ui.activity.ShipAddressActivity
 import com.kotlin.provider.common.ProviderConstant
-//import com.kotlin.provider.common.afterLogin
-//import com.kotlin.provider.common.isLogined
-//import com.kotlin.user.ui.activity.UserInfoActivity
+import com.kotlin.provider.common.afterLogin
+import com.kotlin.provider.common.isLogined
+import com.kotlin.user.ui.activity.LoginActivity
+import com.kotlin.user.ui.activity.UserInfoActivity
 import kotlinx.android.synthetic.main.fragment_me.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -70,16 +72,18 @@ class MeFragment : BaseFragment(), View.OnClickListener {
         加载初始数据
      */
     private fun loadData() {
-//        if (isLogined()) {
-//            val userIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
-//            if (userIcon.isNotEmpty()) {
-//                mUserIconIv.loadUrl(userIcon)
-//            }
-//            mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
-//        } else {
-//            mUserIconIv.setImageResource(R.drawable.icon_default_user)
-//            mUserNameTv.text = getString(R.string.un_login_text)
-//        }
+        if (isLogined()) {
+            val userIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
+            // 如果头像不为空 加载 userIcon
+            if (userIcon.isNotEmpty()) {
+                mUserIconIv.loadUrl(userIcon)
+            }
+            // 显示昵称
+            mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
+        } else { // 用户未登录状态下
+            mUserIconIv.setImageResource(R.drawable.icon_default_user)
+            mUserNameTv.text = getString(R.string.un_login_text)
+        }
 
     }
 
@@ -88,11 +92,16 @@ class MeFragment : BaseFragment(), View.OnClickListener {
      */
     override fun onClick(view: View) {
         when (view.id) {
-//            R.id.mUserIconIv, R.id.mUserNameTv -> {
+            R.id.mUserIconIv, R.id.mUserNameTv -> {
 //                afterLogin {
 //                    startActivity<UserInfoActivity>()
 //                }
-//            }
+                if(isLogined()){
+                    startActivity<UserInfoActivity>()
+                }else{
+                    startActivity<LoginActivity>()
+                }
+            }
 //
 //            R.id.mWaitPayOrderTv -> {
 //                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_PAY)
@@ -117,9 +126,9 @@ class MeFragment : BaseFragment(), View.OnClickListener {
 //            R.id.mShareTv -> {
 //                toast(R.string.coming_soon_tip)
 //            }
-//            R.id.mSettingTv -> {
-//                startActivity<SettingActivity>()
-//            }
+            R.id.mSettingTv -> {
+                startActivity<SettingActivity>()
+            }
         }
     }
 

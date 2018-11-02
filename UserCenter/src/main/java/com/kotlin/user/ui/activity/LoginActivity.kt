@@ -63,7 +63,6 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         toast("登录成功")
         // 存储用户基本信息
         UserPrefsUtils.putUserInfo(result)
-        startActivity<UserInfoActivity>()
         finish()
     }
 

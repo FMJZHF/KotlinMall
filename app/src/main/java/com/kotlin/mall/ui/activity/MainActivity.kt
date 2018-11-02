@@ -3,11 +3,22 @@ package com.kotlin.mall.ui.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+//import com.eightbitlab.rxbus.Bus
+//import com.eightbitlab.rxbus.registerInBus
+import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseActivity
+import com.kotlin.base.utils.AppPrefsUtils
+//import com.kotlin.goods.common.GoodsConstant
+//import com.kotlin.goods.event.UpdateCartSizeEvent
+//import com.kotlin.goods.ui.fragment.CartFragment
+//import com.kotlin.goods.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.HomeFragment
 import com.kotlin.mall.ui.fragment.MeFragment
+//import com.kotlin.message.ui.fragment.MessageFragment
+//import com.kotlin.provider.event.MessageBadgeEvent
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import java.util.*
 
 // 主界面
@@ -18,10 +29,13 @@ class MainActivity : BaseActivity() {
     //主界面Fragment
     private val mHomeFragment by lazy { HomeFragment() }
     //商品分类Fragment
+//    private val mCategoryFragment by lazy { CategoryFragment() }
     private val mCategoryFragment by lazy { HomeFragment() }
     //购物车Fragment
+//    private val mCartFragment by lazy { CartFragment() }
     private val mCartFragment by lazy { HomeFragment() }
-    //消息Fragment 
+    //消息Fragment
+//    private val mMsgFragment by lazy { MessageFragment() }
     private val mMsgFragment by lazy { HomeFragment() }
     //"我的"Fragment
     private val mMeFragment by lazy { MeFragment() }
@@ -34,6 +48,8 @@ class MainActivity : BaseActivity() {
         initFragment()
         initBottomNav()
         changeFragment(0)
+//        initObserve()
+//        loadCartSize()
 
     }
 
