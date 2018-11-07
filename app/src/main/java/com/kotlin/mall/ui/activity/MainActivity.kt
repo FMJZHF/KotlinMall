@@ -11,7 +11,7 @@ import com.kotlin.base.utils.AppPrefsUtils
 //import com.kotlin.goods.common.GoodsConstant
 //import com.kotlin.goods.event.UpdateCartSizeEvent
 //import com.kotlin.goods.ui.fragment.CartFragment
-//import com.kotlin.goods.ui.fragment.CategoryFragment
+import com.kotlin.goods.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.HomeFragment
 import com.kotlin.mall.ui.fragment.MeFragment
@@ -29,8 +29,7 @@ class MainActivity : BaseActivity() {
     //主界面Fragment
     private val mHomeFragment by lazy { HomeFragment() }
     //商品分类Fragment
-//    private val mCategoryFragment by lazy { CategoryFragment() }
-    private val mCategoryFragment by lazy { HomeFragment() }
+    private val mCategoryFragment by lazy { CategoryFragment() }
     //购物车Fragment
 //    private val mCartFragment by lazy { CartFragment() }
     private val mCartFragment by lazy { HomeFragment() }
