@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.widgets.BannerImageLoader
+import com.kotlin.goods.ui.activity.SearchGoodsActivity
 import com.kotlin.mall.R
 import com.kotlin.mall.common.*
 import com.kotlin.mall.ui.adapter.HomeDiscountAdapter
@@ -15,7 +16,6 @@ import com.kotlin.mall.ui.adapter.TopicAdapter
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import me.crosswall.lib.coverflow.CoverFlow
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -37,6 +37,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initView()
         initBanner()
         initNews()
         initDiscount()
@@ -48,7 +50,7 @@ class HomeFragment : BaseFragment() {
      */
     private fun initView() {
         mSearchEt.onClick {
-            //            startActivity<SearchGoodsActivity>()
+            startActivity<SearchGoodsActivity>()
         }
 
         mScanIv.onClick {
@@ -87,7 +89,7 @@ class HomeFragment : BaseFragment() {
         manager.orientation = LinearLayoutManager.HORIZONTAL
         mHomeDiscountRv.layoutManager = manager
 
-        val discountAdapter  = HomeDiscountAdapter(activity!!)
+        val discountAdapter = HomeDiscountAdapter(activity!!)
         mHomeDiscountRv.adapter = discountAdapter
         discountAdapter.setData(mutableListOf(HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE, HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE))
     }

@@ -1,9 +1,13 @@
 package com.kotlin.goods
 
-/**
- *
- *  Desc:  三方控件扩展
- *
- * @author zhf QQ:578121695
- * @time 2018/11/6 16:26
+import android.widget.EditText
+import org.jetbrains.anko.find
+import ren.qinc.numberbutton.NumberButton
+import ren.qinc.numberbutton.R
+
+/*
+    三方控件扩展
  */
+fun NumberButton.getEditText():EditText{
+    return find(R.id.text_count)
+}

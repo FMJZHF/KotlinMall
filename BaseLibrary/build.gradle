@@ -32,76 +32,61 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     api 'com.android.support:support-v4:28.0.0'
     api 'com.android.support:recyclerview-v7:28.0.0'
-    api 'com.android.support:design:28.0.0'
     api 'com.android.support:cardview-v7:28.0.0'
+    api 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     // kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     // Anko Commons
     api "org.jetbrains.anko:anko-commons:$anko_version"
-
     // Support-v4 (only Anko Commons)
     api "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
-
     // Appcompat-v7 (only Anko Commons)
     api "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
-
     // RxAndroid and RxKotlin
     api 'io.reactivex:rxkotlin:2.0.0-RC1'
     api 'io.reactivex:rxandroid:1.2.1'
-
     // Retrofit
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
-
     // Dagger2
     api 'com.google.dagger:dagger:2.18'
     kapt 'com.google.dagger:dagger-compiler:2.18'
-
     // RxLifecycle
     api 'com.trello:rxlifecycle-kotlin:1.0'
     api 'com.trello:rxlifecycle-components:1.0'
-
     // Glide
     api 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-
     // 圆形图片  CircleImageView
     api 'de.hdodenhof:circleimageview:2.2.0'
-
     // 图片选择 takephoto
     api 'com.jph.takephoto:takephoto_library:4.0.3'
-
     // 弹框样式 Android-AlertView
     api 'com.bigkoo:alertview:1.0.3'
-
     // 七牛云
     api 'com.qiniu:qiniu-android-sdk:7.3.+'
-
     // 底部导航栏
     api 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
-
     // banner
     api 'com.youth.banner:banner:1.4.10'
-
     // 标签
     api 'com.github.shts:TriangleLabelView:1.1.2'
-
     // 画廊布局
     api 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
-
-    // MulitStateView
-    api 'com.github.Kennyc1012:MultiStateView:1.3.2'
-
     //上下拉刷新
     api 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
+    // MulitStateView
+    api 'com.github.Kennyc1012:MultiStateView:1.3.2'
+    // FlowLayout 流式布局
+    api 'com.hyman:flowlayout-lib:1.1.2'
+    //Kotlin Bus
+    api 'com.eightbitlab:rxbus:1.0.2'
 }
 repositories {
     mavenCentral()

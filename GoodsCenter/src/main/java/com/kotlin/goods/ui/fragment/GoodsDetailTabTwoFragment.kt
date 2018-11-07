@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-//import com.eightbitlab.rxbus.Bus
-//import com.eightbitlab.rxbus.registerInBus
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.kotlin.base.ext.loadUrl
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.goods.R
@@ -31,20 +31,20 @@ class GoodsDetailTabTwoFragment : BaseFragment() {
         初始化监听，商品详情获取成功后，加载当前页面
      */
     private fun initObserve() {
-//        Bus.observe<GoodsDetailImageEvent>()
-//                .subscribe {
-//                    t: GoodsDetailImageEvent ->
-//                    run {
-//                        mGoodsDetailOneIv.loadUrl(t.imgOne)
-//                        mGoodsDetailTwoIv.loadUrl(t.imgTwo)
-//                    }
-//                }
-//                .registerInBus(this)
+        Bus.observe<GoodsDetailImageEvent>()
+                .subscribe {
+                    t: GoodsDetailImageEvent ->
+                    run {
+                        mGoodsDetailOneIv.loadUrl(t.imgOne)
+                        mGoodsDetailTwoIv.loadUrl(t.imgTwo)
+                    }
+                }
+                .registerInBus(this)
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        Bus.unregister(this)
+        Bus.unregister(this)
     }
 }

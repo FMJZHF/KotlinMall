@@ -37,4 +37,6 @@ dependencies {
     implementation project(':Provider')
     //Dagger2
     kapt  'com.google.dagger:dagger-compiler:2.18'
+
+    implementation 'ren.qinc.numberbutton:numberbutton:0.0.1'
 }

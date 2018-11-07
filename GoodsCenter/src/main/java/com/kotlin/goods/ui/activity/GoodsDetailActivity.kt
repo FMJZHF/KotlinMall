@@ -5,16 +5,16 @@ import android.support.design.widget.TabLayout
 import android.view.Gravity
 import android.view.View
 //import com.alibaba.android.arouter.launcher.ARouter
-//import com.eightbitlab.rxbus.Bus
-//import com.eightbitlab.rxbus.registerInBus
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseActivity
 import com.kotlin.base.utils.AppPrefsUtils
 import com.kotlin.goods.R
 import com.kotlin.goods.common.GoodsConstant
-//import com.kotlin.goods.event.AddCartEvent
-//import com.kotlin.goods.event.SkuChangedEvent
-//import com.kotlin.goods.event.UpdateCartSizeEvent
+import com.kotlin.goods.event.AddCartEvent
+import com.kotlin.goods.event.SkuChangedEvent
+import com.kotlin.goods.event.UpdateCartSizeEvent
 import com.kotlin.goods.ui.adapter.GoodsDetailVpAdapter
 import com.kotlin.provider.common.afterLogin
 import com.kotlin.provider.common.isLogined
@@ -50,7 +50,7 @@ class GoodsDetailActivity:BaseActivity() {
 
         mAddCartBtn.onClick {
             afterLogin {
-//                Bus.send(AddCartEvent())
+                Bus.send(AddCartEvent())
             }
         }
 
@@ -76,10 +76,10 @@ class GoodsDetailActivity:BaseActivity() {
         监听购物车数量变化
      */
     private fun initObserve(){
-//        Bus.observe<UpdateCartSizeEvent>()
-//                .subscribe {
-//                    setCartBadge()
-//                }.registerInBus(this)
+        Bus.observe<UpdateCartSizeEvent>()
+                .subscribe {
+                    setCartBadge()
+                }.registerInBus(this)
     }
 
     /*
@@ -98,6 +98,6 @@ class GoodsDetailActivity:BaseActivity() {
      */
     override fun onDestroy() {
         super.onDestroy()
-//        Bus.unregister(this)
+        Bus.unregister(this)
     }
 }
