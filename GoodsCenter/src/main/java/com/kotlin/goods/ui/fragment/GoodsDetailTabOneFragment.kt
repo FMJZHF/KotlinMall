@@ -1,6 +1,7 @@
 package com.kotlin.goods.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -176,15 +177,15 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
         加入购物车
      */
     private fun addCart(){
-//        mCurGoods?.let {
-//            mPresenter.addCart(it.id,
-//                    it.goodsDesc,
-//                    it.goodsDefaultIcon,
-//                    it.goodsDefaultPrice,
-//                    mSkuPop.getSelectCount(),
-//                    mSkuPop.getSelectSku()
-//                    )
-//        }
+        mCurGoods?.let {
+            mPresenter.addCart(it.id,
+                    it.goodsDesc,
+                    it.goodsDefaultIcon,
+                    it.goodsDefaultPrice,
+                    mSkuPop.getSelectCount(),
+                    mSkuPop.getSelectSku()
+                    )
+        }
 
     }
 
@@ -192,6 +193,7 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
         加入购物车 回调
      */
     override fun onAddCartResult(result: Int) {
+        // 发送通知
         Bus.send(UpdateCartSizeEvent())
     }
 

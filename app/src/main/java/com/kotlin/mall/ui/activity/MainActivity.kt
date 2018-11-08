@@ -3,14 +3,14 @@ package com.kotlin.mall.ui.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
-//import com.eightbitlab.rxbus.Bus
-//import com.eightbitlab.rxbus.registerInBus
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseActivity
 import com.kotlin.base.utils.AppPrefsUtils
-//import com.kotlin.goods.common.GoodsConstant
-//import com.kotlin.goods.event.UpdateCartSizeEvent
-//import com.kotlin.goods.ui.fragment.CartFragment
+import com.kotlin.goods.common.GoodsConstant
+import com.kotlin.goods.event.UpdateCartSizeEvent
+import com.kotlin.goods.ui.fragment.CartFragment
 import com.kotlin.goods.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.HomeFragment
@@ -24,6 +24,7 @@ import java.util.*
 // 主界面
 class MainActivity : BaseActivity() {
 
+    private var pressTime: Long = 0
     //Fragment 栈管理
     private val mStack = Stack<Fragment>()
     //主界面Fragment
@@ -47,8 +48,8 @@ class MainActivity : BaseActivity() {
         initFragment()
         initBottomNav()
         changeFragment(0)
-//        initObserve()
-//        loadCartSize()
+        initObserve()
+        loadCartSize()
 
     }
 
@@ -105,5 +106,50 @@ class MainActivity : BaseActivity() {
         manager.commit()
     }
 
+    /*
+        初始化监听，购物车数量变化及消息标签是否显示
+     */
+    private fun initObserve() {
+        // 监听购物车车的数量变化
+        Bus.observe<UpdateCartSizeEvent>()
+                .subscribe {
+                    loadCartSize()
+                }.registerInBus(this)
+
+//        Bus.observe<MessageBadgeEvent>()
+//                .subscribe { t: MessageBadgeEvent ->
+//                    run {
+//                        mBottomNavBar.checkMsgBadge(t.isVisible)
+//                    }
+//                }.registerInBus(this)
+    }
+
+    /*
+        加载购物车数量
+     */
+    private fun loadCartSize() {
+        mBottomNavBar.checkCartBadge(AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE))
+    }
+
+    /*
+        取消Bus事件监听
+     */
+    override fun onDestroy() {
+        super.onDestroy()
+        Bus.unregister(this)
+    }
+
+    /*
+        重写Back事件，双击退出
+     */
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+        }
+    }
 
 }
