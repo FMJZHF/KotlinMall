@@ -54,7 +54,7 @@ class GoodsDetailActivity:BaseActivity() {
         }
 
         mEnterCartTv.onClick {
-//            startActivity<CartActivity>()
+            startActivity<CartActivity>()
         }
 
         mLeftIv.onClick {
