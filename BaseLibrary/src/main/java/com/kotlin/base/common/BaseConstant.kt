@@ -14,8 +14,8 @@ class BaseConstant {
         const val IMAGE_SERVER_ADDRESS = "http://phgasoa9a.bkt.clouddn.com/"
 
         //本地服务器地址
-        const val SERVER_ADDRESS = "http://192.168.1.104:8081/kotlin/"
-//        const val SERVER_ADDRESS = "http://192.168.11.245:8081/kotlin/"
+//        const val SERVER_ADDRESS = "http://192.168.1.104:8081/kotlin/"
+        const val SERVER_ADDRESS = "http://192.168.11.245:8081/kotlin/"
 
         //SP表名
         const val TABLE_PREFS = "Kotlin_mall"
