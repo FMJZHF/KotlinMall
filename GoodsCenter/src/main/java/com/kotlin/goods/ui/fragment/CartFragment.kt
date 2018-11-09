@@ -2,6 +2,7 @@ package com.kotlin.goods.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -207,6 +208,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
         提交购物车回调
      */
     override fun onSubmitCartListResult(result: Int) {
+        // 通过路由将ID传递过去
         ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
                 .withInt(ProviderConstant.KEY_ORDER_ID, result)
                 .navigation()

@@ -1,6 +1,7 @@
 package com.kotlin.base.ui.activity
 
 import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.base.common.BaseApplication
 import com.kotlin.base.injection.component.ActivityComponent
 import com.kotlin.base.injection.component.DaggerActivityComponent
@@ -42,6 +43,8 @@ import javax.inject.Inject
 
         //初始加载框
         mLoadingDialog = ProgressLoading.create(this)
+        //ARouter注册
+        ARouter.getInstance().inject(this)
     }
 
     // 初始Activity Component
