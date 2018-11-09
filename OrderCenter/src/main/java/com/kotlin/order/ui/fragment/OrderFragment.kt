@@ -19,7 +19,7 @@ import com.kotlin.order.injection.component.DaggerOrderComponent
 import com.kotlin.order.injection.module.OrderModule
 import com.kotlin.order.presenter.OrderListPresenter
 import com.kotlin.order.presenter.view.OrderListView
-//import com.kotlin.order.ui.activity.OrderDetailActivity
+import com.kotlin.order.ui.activity.OrderDetailActivity
 import com.kotlin.order.ui.adapter.OrderAdapter
 import com.kotlin.provider.common.ProviderConstant
 import com.kotlin.provider.router.RouterPath
@@ -94,7 +94,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
          */
         mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
             override fun onItemClick(item: Order, position: Int) {
-//                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
+                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
             }
         })
 

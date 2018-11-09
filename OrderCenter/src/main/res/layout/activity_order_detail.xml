@@ -8,9 +8,9 @@
         style="@style/MatchWrap"
         app:titleText="订单详情" />
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,5 +88,5 @@
                 style="@style/commonRecyclerView"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
