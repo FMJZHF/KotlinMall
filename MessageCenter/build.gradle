@@ -36,5 +36,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':Provider')
     //Dagger2
-    kapt  'com.google.dagger:dagger-compiler:2.18'
+    kapt  "com.google.dagger:dagger-compiler:$dagger_version"
 }
