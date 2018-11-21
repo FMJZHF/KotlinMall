@@ -23,8 +23,7 @@
             android:drawablePadding="@dimen/common_padding_small"
             android:hint="请输入手机号码"
             android:inputType="phone"
-            android:paddingLeft="@dimen/common_padding_small"
-            android:text="18520180001" />
+            android:paddingLeft="@dimen/common_padding_small"/>
 
         <View style="@style/DividerFixedHeight" />
 
@@ -37,8 +36,7 @@
             android:drawablePadding="@dimen/common_padding_small"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:paddingLeft="@dimen/common_padding_small"
-            android:text="123456" />
+            android:paddingLeft="@dimen/common_padding_small" />
     </LinearLayout>
 
     <Button
