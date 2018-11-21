@@ -15,8 +15,8 @@ import com.kotlin.goods.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.HomeFragment
 import com.kotlin.mall.ui.fragment.MeFragment
-//import com.kotlin.message.ui.fragment.MessageFragment
-//import com.kotlin.provider.event.MessageBadgeEvent
+import com.kotlin.message.ui.fragment.MessageFragment
+import com.kotlin.provider.event.MessageBadgeEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import java.util.*
@@ -34,8 +34,7 @@ class MainActivity : BaseActivity() {
     //购物车Fragment
     private val mCartFragment by lazy { CartFragment() }
     //消息Fragment
-//    private val mMsgFragment by lazy { MessageFragment() }
-    private val mMsgFragment by lazy { HomeFragment() }
+    private val mMsgFragment by lazy { MessageFragment() }
     //"我的"Fragment
     private val mMeFragment by lazy { MeFragment() }
 
@@ -115,12 +114,12 @@ class MainActivity : BaseActivity() {
                     loadCartSize()
                 }.registerInBus(this)
 
-//        Bus.observe<MessageBadgeEvent>()
-//                .subscribe { t: MessageBadgeEvent ->
-//                    run {
-//                        mBottomNavBar.checkMsgBadge(t.isVisible)
-//                    }
-//                }.registerInBus(this)
+        Bus.observe<MessageBadgeEvent>()
+                .subscribe { t: MessageBadgeEvent ->
+                    run {
+                        mBottomNavBar.checkMsgBadge(t.isVisible)
+                    }
+                }.registerInBus(this)
     }
 
     /*

@@ -10,10 +10,9 @@ kapt {
     }
 }
 
-//
-//androidExtensions {
-//    experimental = true
-//}
+androidExtensions {
+    experimental = true
+}
 
 android {
     compileSdkVersion 28

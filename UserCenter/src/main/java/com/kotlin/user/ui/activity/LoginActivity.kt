@@ -2,10 +2,12 @@ package com.kotlin.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.provider.PushProvider
 import com.kotlin.provider.router.RouterPath
 import com.kotlin.user.R
 import com.kotlin.user.data.protocol.UserInfo
@@ -29,6 +31,10 @@ import org.jetbrains.anko.toast
 // 这里的路径需要注意的是至少需要有两级，/xx/xx
 @Route(path = RouterPath.UserCenter.PATH_LOGIN)
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClickListener {
+
+    @Autowired(name = RouterPath.MessageCenter.PATH_MESSAGE_PUSH)
+    @JvmField
+    var mPushProvider: PushProvider? = null
 
     /*
         Dagger注册
@@ -84,9 +90,10 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
             // 登录
             R.id.mLoginBtn -> {
-
-//                mPresenter.login(mMobileEt.text.toString(), mPwdEt.text.toString(), mPushProvider?.getPushId() ?: "")
-                mPresenter.login(mMobileEt.text.toString(), mPwdEt.text.toString(), "")
+                var mobile = mMobileEt.text.toString()
+                var passowrd = mPwdEt.text.toString()
+                var pushId = mPushProvider?.getPushId() ?: ""
+                mPresenter.login(mobile,passowrd , pushId)
             }
 
             // 忘记密码

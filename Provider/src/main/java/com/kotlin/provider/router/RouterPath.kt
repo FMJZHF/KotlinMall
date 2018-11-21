@@ -32,8 +32,8 @@ object RouterPath {
     //消息模块
     class MessageCenter {
         companion object {
-            const val PATH_MESSAGE_PUSH = "/messageCenter/push"
-            const val PATH_MESSAGE_ORDER = "/messageCenter/order"
+            const val PATH_MESSAGE_PUSH = "/messageCenterPush/push"
+            const val PATH_MESSAGE_ORDER = "/messageCenterOrder/order"
         }
     }
 }
