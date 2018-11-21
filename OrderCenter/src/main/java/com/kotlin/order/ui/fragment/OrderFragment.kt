@@ -72,17 +72,18 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
             override fun onOptClick(optType: Int, order: Order) {
                 when (optType) {
                     OrderConstant.OPT_ORDER_PAY -> {
+                        // 传递订单号 和 订单价格
                         ARouter.getInstance().build(RouterPath.PaySDK.PATH_PAY)
                                 .withInt(ProviderConstant.KEY_ORDER_ID, order.id)
                                 .withLong(ProviderConstant.KEY_ORDER_PRICE, order.totalPrice)
                                 .navigation()
                     }
                     OrderConstant.OPT_ORDER_CONFIRM -> {
-//                        mPresenter.confirmOrder(order.id)
+//                       // mPresenter.confirmOrder(order.id)
                         showConfirmDialog(order)
                     }
                     OrderConstant.OPT_ORDER_CANCEL -> {
-                        //mPresenter.cancelOrder(order.id)
+//                        //mPresenter.cancelOrder(order.id)
                         showCancelDialog(order)
                     }
                 }
