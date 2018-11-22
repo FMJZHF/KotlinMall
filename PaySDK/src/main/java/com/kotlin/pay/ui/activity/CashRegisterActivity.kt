@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.alipay.sdk.app.EnvUtils
 import com.alipay.sdk.app.PayTask
+import com.kotlin.base.common.BaseConstant
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.base.utils.YuanFenConverter
@@ -49,9 +50,11 @@ class CashRegisterActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnCl
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cash_register)
 
-        //  配置 沙箱环境 （正式环境必须 注释 ）
-        // 账号： 开发者中心 -> 开发服务 ->  研发服务->  沙箱账号
-        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX)
+        if(BaseConstant.isDebug){
+            //  配置 沙箱环境 （正式环境必须 注释 ）
+            // 账号： 开发者中心 -> 开发服务 ->  研发服务->  沙箱账号
+            EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX)
+        }
 
         ARouter.getInstance().inject(this)
 
@@ -88,7 +91,6 @@ class CashRegisterActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnCl
         //  简化异步代码
         doAsync {
             val resultMap: Map<String, String> = PayTask(this@CashRegisterActivity).payV2(result, true)
-//            Log.e("TAG"," - >  "+ resultMap.toString())
             // 主线程
             uiThread {
                 if (resultMap["resultStatus"].equals("9000")) {
